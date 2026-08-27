@@ -1,0 +1,34 @@
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+build/
+dist/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Data and outputs
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+figures/*
+!figures/.gitkeep
+reports/*
+!reports/.gitkeep
+results/*
+!results/.gitkeep
+
+# Local editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
