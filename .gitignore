@@ -32,3 +32,12 @@ results/*
 !.vscode/settings.json
 !.vscode/extensions.json
 .idea/
+
+# 依赖引导缓存与 AgentTeams 运行态（非交付物）
+.wheels/
+.tmp/
+.agent-teams/
+
+# 临时探针脚本（各角色自查用，不入库）
+_scratch_*
+data/_tmp_*
