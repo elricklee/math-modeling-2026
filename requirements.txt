@@ -1,20 +1,12 @@
-pandas
-numpy
-scipy
-scikit-learn
-statsmodels
-matplotlib
-seaborn
+# ===== C 题求解管线运行必需（版本 = 当前 .venv 实测可用组合）=====
+numpy==2.5.3
+scipy==1.18.1
+openpyxl==3.1.5
+statsmodels==0.15.0
+matplotlib==3.11.2
+
+# ===== 可选：Notebook 探索与代码风格（管线本身不依赖）=====
 jupyter
-openpyxl
-xlrd
-sympy
-networkx
-tqdm
-joblib
-pyyaml
-python-dotenv
-plotly
+pandas
 black
 ruff
-
