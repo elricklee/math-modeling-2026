@@ -103,14 +103,29 @@ def _build_lp(price: np.ndarray, load_kw: np.ndarray, pv_kw: np.ndarray):
 
 def solve_day_solution(day: date, price: np.ndarray, load_kw: np.ndarray, pv_kw: np.ndarray):
     c, a_eq, b_eq, bounds = _build_lp(price, load_kw, pv_kw)
-    result = linprog(c, A_eq=a_eq, b_eq=b_eq, bounds=bounds, method="highs")
+    shared = np.zeros((T, N))
+    shared[np.arange(T), IX + np.arange(T)] = 1.0
+    shared[np.arange(T), IY + np.arange(T)] = 1.0
+    result = linprog(c, A_eq=a_eq, b_eq=b_eq, A_ub=shared,
+                     b_ub=np.full(T, XMAX), bounds=bounds, method="highs")
     if not result.success:
-        return DayResult(day.isoformat(), False, result.message, *(float("nan"),) * 13), None
+        raise RuntimeError(f"{day}: {result.message}")
+
+    throughput = np.zeros(N)
+    throughput[IX:IY + T] = 1.0
+    result = linprog(throughput, A_eq=a_eq, b_eq=b_eq,
+                     A_ub=np.vstack([shared, c]),
+                     b_ub=np.r_[np.full(T, XMAX), result.fun + 1e-7],
+                     bounds=bounds, method="highs")
+    if not result.success:
+        raise RuntimeError(f"{day}: secondary optimization failed: {result.message}")
 
     z = result.x
     s = z[IS : IS + T + 1]
     x = z[IX : IX + T]
     y = z[IY : IY + T]
+    if np.any((x > 1e-6) & (y > 1e-6)):
+        raise RuntimeError(f"{day}: simultaneous charging/discharging is not executable")
     g = z[IG : IG + T]
     p = z[IP : IP + T]
     emergency = z[IZ : IZ + T]

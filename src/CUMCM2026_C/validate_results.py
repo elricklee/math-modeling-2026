@@ -127,7 +127,7 @@ class SheetSpec:
 
 PLAN_HEADER: tuple[str, ...] = (
     "日期\\时间",
-    *io.plan_purchase_labels_as_template(),
+    *[io.interval_label(t) for t in range(1, 145)],
     "全天购电量",
     "全天购电费",
 )
@@ -170,11 +170,11 @@ RESULT1_PLAN_LABELS: list[str] = io.result1_row_labels_decision()
 :data:`RESULT1_LABEL_VARIANTS` 的 ``"template"`` 项。
 """
 
-PLAN_TIME_LABELS: list[str] = io.plan_purchase_labels_as_template()
-"""``result2/3/4-*`` ``计划购电量`` 的 144 个时间列表头（**含** ``7:0-7:10`` 瑕疵）。"""
+PLAN_TIME_LABELS: list[str] = [io.interval_label(t) for t in range(1, 145)]
+"""``result2/3/4-*`` ``计划购电量`` 的 144 个物理区间表头（不循环移动数据）。"""
 
-PLAN_TIME_LABELS_CANONICAL: list[str] = io.plan_purchase_labels()
-"""同上，但使用规范化写法 ``7:00-7:10``（仅在确认评审接受纠正时使用）。"""
+PLAN_TIME_LABELS_CANONICAL: list[str] = PLAN_TIME_LABELS.copy()
+"""与当前物理区间表头相同。"""
 
 BLOCK_LABELS: list[str] = io.half_hour_block_labels()
 """``充放电量`` 的 6 个 4 小时时段标签。"""
@@ -196,7 +196,7 @@ TEMPLATE_TYPOS: dict[str, str] = {
         "队长裁定 R8：改用附件 1 口径 0:00-0:10 … 23:50-0:00+1"
     ),
 }
-"""模板中的已知拼写/命名瑕疵与已裁定差异，写盘时按下述口径执行。"""
+"""历史模板差异记录；其中旧 R7/R8 注释为原仓库材料，不代表官方确认。当前写盘使用物理区间口径。"""
 
 RESULT1_LABEL_VARIANTS: dict[str, list[str]] = {
     "decision": io.result1_row_labels_decision(),
@@ -648,7 +648,7 @@ def check_totals(
     reported_c = np.array([_as_float(r[146] if len(r) > 146 else None) for r in body])
     # 附件 5 宽表列头从第二个时段开始，末列为次日首时段；
     # 费用复算需将价格向左循环一位，与模板列语义一致。
-    template_price = np.roll(price, -1, axis=1) if price.ndim == 2 and price.shape[1] == 144 else price
+    template_price = price
     calc_e, calc_c = recompute_daily_totals(plan, template_price)
     if np.all(np.isnan(reported_e)) and np.all(np.isnan(reported_c)):
         return CheckResult(
