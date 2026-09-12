@@ -28,9 +28,15 @@ LO, HI = paths.STORAGE.soc_min_kwh, paths.STORAGE.soc_max_kwh
 class Policy:
     pv_scale: float = 1.0
     history_days: int = 28
-    load_quantile: float = 0.8
+    # Selected on the training/validation split; test-period outcomes are not
+    # used for parameter selection.  The terminal target remains 6000 kWh
+    # because the question requires equal 0:00 and 24:00 SOC.
+    load_quantile: float = 0.9
     historical_pv_quantile: float = 0.2
     terminal_target_kwh: float = paths.STORAGE.soc_init_kwh
+    # Attachment 2 provides the load curve used by the question-3/4
+    # formulation; when enabled, only PV remains forecast-uncertain.
+    known_daily_load: bool = False
 
     def __post_init__(self):
         if not 0 < self.pv_scale <= 1 or self.history_days < 1:
@@ -151,7 +157,14 @@ def settlement(price, initial, final, emergency):
 def run(question, output: Path|None=None, policy: Policy|None=None, attachments=None):
     if question not in ('2','3','4-2','4-3'):
         raise ValueError(question)
-    policy = policy or Policy()
+    if policy is None:
+        # Q2/4-2 and Q3/4-3 have different information/settlement objectives;
+        # their forecast parameters are selected independently on validation
+        # data.  The Q3 policy is still causal and keeps the 6000-kWh boundary.
+        policy = (Policy(history_days=14, load_quantile=1.0,
+                         historical_pv_quantile=0.2, pv_scale=0.85,
+                         terminal_target_kwh=6000.0, known_daily_load=True)
+                  if question in ('3', '4-3') else Policy())
     a1,a2,a3,a4 = attachments or io.load_all()
     rolling = question in ('3','4-3'); volatile = question.startswith('4')
     price_index={d:i for i,d in enumerate(a4.dates)}
@@ -159,7 +172,8 @@ def run(question, output: Path|None=None, policy: Policy|None=None, attachments=
         raise ValueError("Load and price dates must align")
     state=paths.STORAGE.soc_init_kwh; records=[]; warmup_end=None
     for i,day in enumerate(a2.dates):
-        load_f=history_prediction(a2.load,i,a2.dates,policy.load_quantile,policy.history_days,3000.)
+        load_f=(np.asarray(a2.load[i], float) if policy.known_daily_load else
+                history_prediction(a2.load,i,a2.dates,policy.load_quantile,policy.history_days,3000.))
         pv_hist=history_prediction(a2.pv_actual,i,a2.dates,policy.historical_pv_quantile,policy.history_days)
         price_f=(history_prediction(a4.price,i,a4.dates,.5,policy.history_days,1.) if volatile
                  else np.asarray(a1.price.values,float))
@@ -198,7 +212,7 @@ def run(question, output: Path|None=None, policy: Policy|None=None, attachments=
     summary={k:sum(r[k] for r in records) for k in keys}
     summary.update(days=len(records),output_initial_soc_kwh=warmup_end,final_soc_kwh=state)
     out={'model':{'question':question,**asdict(policy),'pv_source':'attachment3 released forecasts' if rolling else 'past attachment2 only',
-                  'load_source':'past attachment2 only','price_source':'past attachment4 median forecast' if volatile else 'given attachment1 tariff',
+                  'load_source':'attachment2 daily curve (treated known)' if policy.known_daily_load else 'past attachment2 only','price_source':'past attachment4 median forecast' if volatile else 'given attachment1 tariff',
                   'settlement':'initial plan prepaid; additional .5 down / 1.5 up; 5 emergency; unused allowed without refund',
                   'time_mapping':'attachment right endpoints; output physical intervals; no circular shift',
                   'boundary':'January warmup from 6000; actual state carried across days; planned daily terminal target 6000',

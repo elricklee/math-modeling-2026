@@ -38,7 +38,7 @@ def main():
         (14, 28, 42),       # history_days
         (0.6, 0.8, 0.9),    # load quantile
         (0.1, 0.2, 0.3),    # historical PV quantile
-        (5000.0, 6000.0, 7000.0),  # planned terminal SOC
+        (6000.0,),          # fixed by the question's daily boundary condition
     )
     rows = []
     for n, (window, lq, pq, terminal) in enumerate(grid, 1):
