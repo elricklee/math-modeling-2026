@@ -1,0 +1,923 @@
+{
+  "script": "CUMCM2026_C/Q2/Q2_field_path_check.py",
+  "version": "3.0",
+  "run_fingerprint": "01276d72caba2c43",
+  "rule_version": 1,
+  "run_fingerprint_rule": "sha256(TOOL_VERSION + rule_version + 规则签名 + 各**参与锚定**的输入 sha256_16)[:16]；**不含挂钟时间**；**增长型记录不参与**（见 `fingerprint_excluded`）。",
+  "run_fingerprint_inputs": [
+    "Q2_analysis.json",
+    "Q2_diagnostics.json",
+    "Q2_最终验收报告.md",
+    "_q2_audit.json",
+    "_q2_audit_thirdparty.json",
+    "_q2_audit_thirdparty_probe.json",
+    "_q2_paper_audit.json",
+    "_q2_u4_multiple_optima.json",
+    "问题二模型的建立.md",
+    "问题二模型的求解.md"
+  ],
+  "verify_hint": "**可被对方当场复现**：跑 `--dry-run` 并比对其 stdout 的 `run_fingerprint` 与本字段；相同 ⇒ 参与锚定的输入未变；不同 ⇒ 由 `inputs` 快照定位是哪一份变了。",
+  "script_frozen": true,
+  "inputs_frozen": false,
+  "inputs_note": "本诊断件是**派生件**：脚本冻结不等于输出冻结——输入（尤其是被扫文档）一变，重跑即产出不同 JSON。故 `script_frozen` 只描述脚本，`inputs` 给出**本次扫描实际消费的输入五元组**，供读者判断『它当时扫的是哪一版』。",
+  "inputs": {
+    "Q2_analysis.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\outputs\\Q2_analysis.json",
+      "splitlines": 18860,
+      "bytes": 531664,
+      "mtime": "2026-09-12 06:35:15",
+      "sha256_16": "26da65503431edb0",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "Q2_diagnostics.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\outputs\\Q2_diagnostics.json",
+      "splitlines": 2836,
+      "bytes": 85267,
+      "mtime": "2026-09-12 06:19:34",
+      "sha256_16": "d86c4474931dd5d9",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_u4_multiple_optima.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_u4_multiple_optima.json",
+      "splitlines": 90,
+      "bytes": 2712,
+      "mtime": "2026-09-12 05:15:38",
+      "sha256_16": "dbb07960e8d79254",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_audit.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit.json",
+      "splitlines": 220,
+      "bytes": 13469,
+      "mtime": "2026-09-12 06:37:49",
+      "sha256_16": "af270453ab2db2a1",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_audit_thirdparty.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit_thirdparty.json",
+      "splitlines": 480,
+      "bytes": 19839,
+      "mtime": "2026-09-12 06:41:06",
+      "sha256_16": "3a6d4a5476444990",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_audit_thirdparty_probe.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit_thirdparty_probe.json",
+      "splitlines": 101,
+      "bytes": 2735,
+      "mtime": "2026-09-12 03:36:23",
+      "sha256_16": "5e7bbfee94411502",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_paper_audit.json": {
+      "role": "artifact",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_paper_audit.json",
+      "splitlines": 271,
+      "bytes": 22527,
+      "mtime": "2026-09-12 06:50:13",
+      "sha256_16": "5a7f4b5b4321d463",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "问题二模型的求解.md": {
+      "role": "scanned_doc",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\问题二模型的求解.md",
+      "splitlines": 460,
+      "bytes": 52312,
+      "mtime": "2026-09-12 05:52:54",
+      "sha256_16": "8fbaf0b6f6ff7b12",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "问题二模型的建立.md": {
+      "role": "scanned_doc",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\问题二模型的建立.md",
+      "splitlines": 350,
+      "bytes": 34528,
+      "mtime": "2026-09-12 04:18:32",
+      "sha256_16": "c4ddbf165b73a843",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "Q2_最终验收报告.md": {
+      "role": "scanned_doc",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\Q2_最终验收报告.md",
+      "splitlines": 668,
+      "bytes": 56536,
+      "mtime": "2026-09-12 06:00:20",
+      "sha256_16": "161a2aba87fa8c39",
+      "fingerprint_excluded": false,
+      "fingerprint_role": "anchor_input"
+    },
+    "_q2_paper_audit.md": {
+      "role": "scanned_doc",
+      "exists": true,
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_paper_audit.md",
+      "splitlines": 328,
+      "bytes": 57893,
+      "mtime": "2026-09-12 07:04:19",
+      "sha256_16": "31ec3463725e7489",
+      "fingerprint_excluded": true,
+      "fingerprint_role": "record（增长型；不参与 run_fingerprint）"
+    }
+  },
+  "artifacts": {
+    "Q2_analysis.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\outputs\\Q2_analysis.json",
+      "sha256_16": "26da65503431edb0"
+    },
+    "Q2_diagnostics.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\outputs\\Q2_diagnostics.json",
+      "sha256_16": "d86c4474931dd5d9"
+    },
+    "_q2_u4_multiple_optima.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_u4_multiple_optima.json",
+      "sha256_16": "dbb07960e8d79254"
+    },
+    "_q2_audit.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit.json",
+      "sha256_16": "af270453ab2db2a1"
+    },
+    "_q2_audit_thirdparty.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit_thirdparty.json",
+      "sha256_16": "3a6d4a5476444990"
+    },
+    "_q2_audit_thirdparty_probe.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_audit_thirdparty_probe.json",
+      "sha256_16": "5e7bbfee94411502"
+    },
+    "_q2_paper_audit.json": {
+      "path": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_paper_audit.json",
+      "sha256_16": "5a7f4b5b4321d463"
+    }
+  },
+  "citations": [
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions",
+      "why": "结论列表（0-based）",
+      "status": "OK",
+      "note": "",
+      "sample": "list(len=9)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[4]",
+      "why": "0-based 第 5 条 = 成对单因子分解（锚点 ②）",
+      "status": "OK",
+      "note": "",
+      "sample": "两个不确定性来源的贡献用**成对单因子分解**给出（承诺调度口径，锚点取 ②，单位 kWh）：③→② 只把负载由「已知」换成「前一日逐小时剖面」、其余不动，紧急购电 +1,753,"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[8]",
+      "why": "0-based 第 9 条 = 5 倍电价作用",
+      "status": "OK",
+      "note": "",
+      "sample": "5 倍电价的真实作用：紧急购电加权均价约 4.46 元/kWh，而计划购电均价仅 0.6148 元/kWh；同样的电量走紧急通道要多付约 5 倍，且集中在预报偏差最大的时段。"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "variants.③ 仅光伏不可知（负载已知）.summary",
+      "why": "具名口径汇总（正确写法）",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=planned_purchase_kwh,actual_purchase_kwh,emergency_purchase_kwh,emergency_slots)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "mae_layers.full_day",
+      "why": "两层 MAE：全天口径",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=n_intervals,mae_kw,rmse_kw,bias_kw)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "mae_layers.actual_positive",
+      "why": "两层 MAE：实际光伏 > 0",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=n_intervals,mae_kw,rmse_kw,bias_kw)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "mae_layers.zero_actual_interval_share",
+      "why": "零光伏时段占比",
+      "status": "OK",
+      "note": "",
+      "sample": "0.4411"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "forecast_errors.mae_definition",
+      "why": "MAE 口径定义",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=definition,n_intervals_per_day,n_intervals_total,mae_layers)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "forecast_errors.cross_release_comparable_subset",
+      "why": "共同覆盖窗",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=definition,hours,n_intervals_per_day,per_release)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "forecast_errors.by_release_hour",
+      "why": "各发布时刻（不可横向排序）",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=当日 00:00 发布,当日 06:00 发布,当日 12:00 发布,前一日 18:00 发布)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "main_vs_control.control_convention_label",
+      "why": "主线对照标签",
+      "status": "OK",
+      "note": "",
+      "sample": "④ 仅光伏不可知 + 改用当天 6:00 发布的预报（覆盖 6:00–24:00，与 0:00 条不可横向比较）"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "main_vs_control.cost_gap_reference_variant",
+      "why": "代价参照变体",
+      "status": "OK",
+      "note": "",
+      "sample": "④（改用当天 6:00 发布预报）"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "main_vs_control.cost_gap_reference_note",
+      "why": "代价参照说明",
+      "status": "OK",
+      "note": "",
+      "sample": "紧急购电对比的**主线对照是 ③**，见 `dispatch_bounds.committed_label`；本字段仅用于给出『信息不足的总代价』，取 ④ 以体现**预报改善对该代"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "dispatch_bounds.committed_label",
+      "why": "承诺调度口径",
+      "status": "OK",
+      "note": "",
+      "sample": "③ 仅光伏不可知（负载已知）"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "pcap_sensitivity.note",
+      "why": "p^cap 灵敏度与早期记录差异说明",
+      "status": "OK",
+      "note": "",
+      "sample": "题目未给购电容量上限，故本口径是敏感性对照；α = 1.00 时上限等于当日预报净负荷峰值，通常不再起作用，可与无上限主口径相互印证。上限很紧（α 小时）时『无足够电量把储能充回 "
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "pcap_sensitivity.scenarios",
+      "why": "α 各档结果",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=α=0.70,α=0.85,α=1.00)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "spreading_rule_comparison.all_year",
+      "why": "错位一格对照规则",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=day,release_hour,unit,primary_definition)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "convention_correction.before",
+      "why": "口径订正前",
+      "status": "OK",
+      "note": "",
+      "sample": "附件 3 前一日 18:00 发布的预报（对第 d 日只覆盖 0:00–18:00 的 18 个整点，缺 18:00–24:00 六列）"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "convention_correction.after",
+      "why": "口径订正后",
+      "status": "OK",
+      "note": "",
+      "sample": "附件 3 第 d 日 0:00 发布的预报（契约 §5.4 订正口径；覆盖第 d 日 0:00–24:00 的全部 24 个小时块 / 144 个时段）"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "convention_correction.additional_corrections",
+      "why": "附带订正",
+      "status": "OK",
+      "note": "",
+      "sample": "list(len=2)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "loop_check",
+      "why": "回环校验",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=label,emergency_purchase_kwh,total_cost_yuan,main_convention_total_cost_yuan)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "baseline_no_storage",
+      "why": "不装储能基线",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=definition,purchase_kwh,cost_yuan,mean_price_yuan_per_kwh)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "control_convention_independent_check",
+      "why": "对照口径独立核查",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=status,what_was_wrong,structural_reason,independent_evidence)"
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "limitations",
+      "why": "局限",
+      "status": "OK",
+      "note": "",
+      "sample": "list(len=5)"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "solver.elapsed_seconds",
+      "why": "批量求解耗时（A-6）",
+      "status": "OK",
+      "note": "",
+      "sample": "33.32693509999808"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "solver.nit",
+      "why": "单纯形迭代次数",
+      "status": "OK",
+      "note": "",
+      "sample": "77417"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "independent_recompute.elapsed_seconds",
+      "why": "逐日复算耗时（A-6）",
+      "status": "OK",
+      "note": "",
+      "sample": "10.90583969999716"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.worksheet_shape_rows_cols",
+      "why": "工作表形状",
+      "status": "OK",
+      "note": "",
+      "sample": "list(len=2)"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.worksheet_header_only",
+      "why": "仅表头",
+      "status": "OK",
+      "note": "",
+      "sample": "True"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.worksheet_layout_note",
+      "why": "版式留痕",
+      "status": "OK",
+      "note": "",
+      "sample": "**本表在收口过程中出现过两次相反的版式要求**：早先要求补一行说明行，其后要求改回批注；最终以 `max_row = 1` + A1 批注为准。留痕仅为可追溯，**不代表任一方的"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.counterfactual_check",
+      "why": "反事实检查",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=emergency_multiplier,main_convention_total_emergency_kwh,main_convention_days_with_emergency,counterfactual_alpha)"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "baseline_B0_purchase_kwh",
+      "why": "B0 基线购电",
+      "status": "OK",
+      "note": "",
+      "sample": "20997349.411166668"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "baseline_B0_mean_price_yuan_per_kwh",
+      "why": "B0 均价",
+      "status": "OK",
+      "note": "",
+      "sample": "0.7813995619492713"
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "purchase_reduction_vs_B0_kwh",
+      "why": "相对 B0 的购电减少",
+      "status": "OK",
+      "note": "",
+      "sample": "778511.2309135571"
+    },
+    {
+      "artifact": "_q2_u4_multiple_optima.json",
+      "path": "experiment_1_execution_convention",
+      "why": "U4 实验一（真实键名）",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=annual_emergency_kwh_convention_A_no_pv,annual_emergency_kwh_convention_B_with_pv,audit_reported_kwh,pipeline_reported_kwh)"
+    },
+    {
+      "artifact": "_q2_u4_multiple_optima.json",
+      "path": "experiment_2_multiple_optima_scan",
+      "why": "U4 实验二（真实键名）",
+      "status": "OK",
+      "note": "",
+      "sample": "dict(keys=reference_day,n_solutions,e_B_min_kwh,e_B_max_kwh)"
+    },
+    {
+      "artifact": "_q2_audit_thirdparty.json",
+      "path": "n_checks",
+      "why": "第三方复核检查项数",
+      "status": "OK",
+      "note": "",
+      "sample": "48"
+    },
+    {
+      "artifact": "_q2_paper_audit.json",
+      "path": "post_closure_notes",
+      "why": "收口补记",
+      "status": "OK",
+      "note": "",
+      "sample": "list(len=6)"
+    }
+  ],
+  "negative": [
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.worksheet_has_explanation_row_only",
+      "why": "旧字段名应已删除",
+      "expect": "absent",
+      "got": "UNRESOLVED",
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "token": "387.36",
+      "why": "作废的 MAE 变体应 0 命中",
+      "expect": 0,
+      "got": 0,
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "token": "covered_only",
+      "why": "作废字段应 0 命中",
+      "expect": 0,
+      "got": 0,
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "token": "448.3124",
+      "why": "错位一格对照值应 6 处",
+      "expect": 6,
+      "got": 6,
+      "ok": true
+    }
+  ],
+  "content_assertions": [
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[4]",
+      "needle": "成对单因子分解",
+      "why": "0-based 第 5 条应为成对分解",
+      "status": "OK",
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[7]",
+      "needle": "预报误差",
+      "why": "0-based 第 8 条应为『决定因素是预报误差』",
+      "status": "OK",
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[8]",
+      "needle": "4.46",
+      "why": "0-based 第 9 条应为 5 倍电价作用（含 4.46）",
+      "status": "OK",
+      "ok": true
+    },
+    {
+      "artifact": "Q2_analysis.json",
+      "path": "mae_layers.actual_positive.mae_kw",
+      "needle": "657.5",
+      "why": "两层 MAE 的正样本口径值",
+      "status": "OK",
+      "ok": true
+    },
+    {
+      "artifact": "Q2_diagnostics.json",
+      "path": "emergency_purchase.worksheet_shape_rows_cols",
+      "needle": "1",
+      "why": "工作表形状应为 [1,3]",
+      "status": "OK",
+      "ok": true
+    }
+  ],
+  "doc_scan": {
+    "求解章": {
+      "file": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\问题二模型的求解.md",
+      "hits": 0,
+      "ok": 0,
+      "partial": 0,
+      "tolerated": 0,
+      "unresolved": 0,
+      "exempt": 0,
+      "items": [],
+      "all": []
+    },
+    "建立章": {
+      "file": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\问题二模型的建立.md",
+      "hits": 0,
+      "ok": 0,
+      "partial": 0,
+      "tolerated": 0,
+      "unresolved": 0,
+      "exempt": 0,
+      "items": [],
+      "all": []
+    },
+    "验收报告": {
+      "file": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q2\\Q2_最终验收报告.md",
+      "hits": 27,
+      "ok": 22,
+      "partial": 0,
+      "tolerated": 3,
+      "unresolved": 2,
+      "exempt": 0,
+      "items": [
+        {
+          "line": 93,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary",
+          "status": "TOLERATED",
+          "note": "`[*]` 用在 dict 上（应写 `.*` 或具体键名），非逐字可解析",
+          "text": "出处：`Q2/outputs/Q2_analysis.json → variants[*].summary`（本表与"
+        },
+        {
+          "line": 136,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary",
+          "status": "TOLERATED",
+          "note": "`[*]` 用在 dict 上（应写 `.*` 或具体键名），非逐字可解析",
+          "text": "| **负载侧主导（约为光伏侧 5.4 倍）** | 负载项增量 1 753 305.58 kWh（1 262 153.80→3 015 459.38）；光伏项增量 322 255.39 kWh（2 693 203.99→3 015 459.38）；两者之比 ≈5.4 | `问题二模型的求解.md`"
+        },
+        {
+          "line": 223,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary.emergency_purchase_kwh",
+          "status": "TOLERATED",
+          "note": "`[*]` 用在 dict 上（应写 `.*` 或具体键名），非逐字可解析",
+          "text": "**同时排除两点**：① 五个口径逐项合计与 `Q2_analysis.json → variants[*].summary.emergency_purchase_kwh`"
+        },
+        {
+          "line": 307,
+          "artifact": "_q2_u4_multiple_optima.json",
+          "path": "experiment_1",
+          "status": "UNRESOLVED",
+          "note": "缺少键 'experiment_1'",
+          "text": "| 定量 | 在**同一条计划解**上换执行口径：不扣光伏得 **17 869 822.25 kWh**（与审计 19 054 624.74 同量级，差 6.2%）；扣光伏得 **1 221 115.56 kWh**（与流水线 1 262 153.80 同量级，差 3.3%） | `_q2_u4_m"
+        },
+        {
+          "line": 308,
+          "artifact": "_q2_u4_multiple_optima.json",
+          "path": "experiment_2",
+          "status": "UNRESOLVED",
+          "note": "缺少键 'experiment_2'",
+          "text": "| 多重最优扫描 | 参考日 2025-07-30，3 种求解方法 + 8 组目标微扰共 **11 个解**，紧急购电量**极差为 0**（同为 9 696.23 kWh），目标值跨度仅 2.077e-03 元 | `_q2_u4_multiple_optima.json → experiment_"
+        }
+      ],
+      "all": [
+        {
+          "line": 24,
+          "artifact": "Q2_diagnostics.json",
+          "path": "metrics",
+          "status": "OK"
+        },
+        {
+          "line": 49,
+          "artifact": "Q2_diagnostics.json",
+          "path": "emergency_purchase.main_convention_total_kwh",
+          "status": "OK"
+        },
+        {
+          "line": 54,
+          "artifact": "Q2_diagnostics.json",
+          "path": "sanity_checks",
+          "status": "OK"
+        },
+        {
+          "line": 56,
+          "artifact": "Q2_analysis.json",
+          "path": "mae_layers",
+          "status": "OK"
+        },
+        {
+          "line": 67,
+          "artifact": "Q2_diagnostics.json",
+          "path": "table1_tables",
+          "status": "OK"
+        },
+        {
+          "line": 79,
+          "artifact": "Q2_diagnostics.json",
+          "path": "table2_tables",
+          "status": "OK"
+        },
+        {
+          "line": 93,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary",
+          "status": "TOLERATED"
+        },
+        {
+          "line": 110,
+          "artifact": "Q2_analysis.json",
+          "path": "pcap_sensitivity.scenarios",
+          "status": "OK"
+        },
+        {
+          "line": 135,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions[0]",
+          "status": "OK"
+        },
+        {
+          "line": 136,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions[4]",
+          "status": "OK"
+        },
+        {
+          "line": 136,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary",
+          "status": "TOLERATED"
+        },
+        {
+          "line": 137,
+          "artifact": "Q2_analysis.json",
+          "path": "pcap_sensitivity.finding",
+          "status": "OK"
+        },
+        {
+          "line": 138,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions[7]",
+          "status": "OK"
+        },
+        {
+          "line": 141,
+          "artifact": "Q2_analysis.json",
+          "path": "dispatch_bounds",
+          "status": "OK"
+        },
+        {
+          "line": 141,
+          "artifact": "Q2_analysis.json",
+          "path": "dispatch_bounds.note",
+          "status": "OK"
+        },
+        {
+          "line": 141,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions[6]",
+          "status": "OK"
+        },
+        {
+          "line": 175,
+          "artifact": "_q2_audit.json",
+          "path": "unverified_or_uncertain",
+          "status": "OK"
+        },
+        {
+          "line": 223,
+          "artifact": "Q2_analysis.json",
+          "path": "variants[*].summary.emergency_purchase_kwh",
+          "status": "TOLERATED"
+        },
+        {
+          "line": 242,
+          "artifact": "Q2_analysis.json",
+          "path": "forecast_errors.cross_release_comparable_subset",
+          "status": "OK"
+        },
+        {
+          "line": 255,
+          "artifact": "Q2_analysis.json",
+          "path": "limitations",
+          "status": "OK"
+        },
+        {
+          "line": 261,
+          "artifact": "Q2_analysis.json",
+          "path": "limitations",
+          "status": "OK"
+        },
+        {
+          "line": 267,
+          "artifact": "_q2_audit.json",
+          "path": "unverified_or_uncertain",
+          "status": "OK"
+        },
+        {
+          "line": 307,
+          "artifact": "_q2_u4_multiple_optima.json",
+          "path": "experiment_1",
+          "status": "UNRESOLVED"
+        },
+        {
+          "line": 308,
+          "artifact": "_q2_u4_multiple_optima.json",
+          "path": "experiment_2",
+          "status": "UNRESOLVED"
+        },
+        {
+          "line": 309,
+          "artifact": "_q2_u4_multiple_optima.json",
+          "path": "daily_summary",
+          "status": "OK"
+        },
+        {
+          "line": 480,
+          "artifact": "Q2_analysis.json",
+          "path": "forecast_errors.block_index_assertion",
+          "status": "OK"
+        },
+        {
+          "line": 503,
+          "artifact": "Q2_analysis.json",
+          "path": "forecast_errors.cross_release_comparable_subset",
+          "status": "OK"
+        }
+      ]
+    },
+    "本审计记录": {
+      "file": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\common\\diagnostics\\_q2_paper_audit.md",
+      "hits": 6,
+      "ok": 6,
+      "partial": 0,
+      "tolerated": 0,
+      "unresolved": 0,
+      "exempt": 5,
+      "items": [],
+      "all": [
+        {
+          "line": 29,
+          "artifact": "Q2_analysis.json",
+          "path": "convention_correction",
+          "status": "OK"
+        },
+        {
+          "line": 86,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions",
+          "status": "OK"
+        },
+        {
+          "line": 86,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions[4]",
+          "status": "OK"
+        },
+        {
+          "line": 108,
+          "artifact": "Q2_analysis.json",
+          "path": "conclusions",
+          "status": "OK"
+        },
+        {
+          "line": 171,
+          "artifact": "_q2_audit_thirdparty.json",
+          "path": "generated_at",
+          "status": "OK"
+        },
+        {
+          "line": 206,
+          "artifact": "Q2_analysis.json",
+          "path": "pcap_sensitivity.note",
+          "status": "OK"
+        }
+      ]
+    }
+  },
+  "semantic_mismatch": [
+    {
+      "doc": "验收报告",
+      "line": 138,
+      "path": "conclusions[7]",
+      "token": "4.46",
+      "expected_index": 8,
+      "why": "4.46 元/kWh 属 0-based 第 9 条",
+      "text": "| **5 倍电价的真实作用** | 紧急购电加权均价约 4.46 元/kWh vs 计划购电均价 0.6148 元/kWh；③ 口径紧急购电费 5 368 048.57 元、占该口径总费用 29.92% | `Q2_analysis.json → conclusions[7]`（4.46 / 0."
+    },
+    {
+      "doc": "验收报告",
+      "line": 138,
+      "path": "conclusions[7]",
+      "token": "0.6148",
+      "expected_index": 8,
+      "why": "0.6148 元/kWh 属 0-based 第 9 条",
+      "text": "| **5 倍电价的真实作用** | 紧急购电加权均价约 4.46 元/kWh vs 计划购电均价 0.6148 元/kWh；③ 口径紧急购电费 5 368 048.57 元、占该口径总费用 29.92% | `Q2_analysis.json → conclusions[7]`（4.46 / 0."
+    }
+  ],
+  "numeric_overlap_warnings": [
+    {
+      "doc": "验收报告",
+      "line": 138,
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions[7]",
+      "numbers_on_line": [
+        "4.46",
+        "0.6148",
+        "048.57",
+        "29.92",
+        "4.46",
+        "0.6148"
+      ],
+      "text": "| **5 倍电价的真实作用** | 紧急购电加权均价约 4.46 元/kWh vs 计划购电均价 0.6148 元/kWh；③ 口径紧急购电费 5 368 048.57 元、占该口径总费用 29.92% | `Q2_analysis.json → conclusions[7]`（4.46 / 0."
+    },
+    {
+      "doc": "验收报告",
+      "line": 309,
+      "artifact": "_q2_u4_multiple_optima.json",
+      "path": "daily_summary",
+      "numbers_on_line": [
+        "219.04"
+      ],
+      "text": "| 旁证 | 本复现独立解得的**计划购电合计 20 385 219.04 kWh**，与求解章表 2-19 口径③**逐位相同** ⇒ 计划阶段两实现吻合，分歧全在执行阶段 | `_q2_u4_multiple_optima.json → daily_summary` |"
+    },
+    {
+      "doc": "本审计记录",
+      "line": 108,
+      "artifact": "Q2_analysis.json",
+      "path": "conclusions",
+      "numbers_on_line": [
+        "322,255.40",
+        "255.39",
+        "0.01",
+        "255.3952"
+      ],
+      "text": "**B-4 JSON 侧对齐（本审计期间执行，属 common/diagnostics 相邻的 Q2 产物维护）**：`Q2_analysis.json → conclusions` 的成对分解条目原本显示 `+322,255.40`（四舍五入），与正文 `322 255.39` 差 0.01；已在"
+    }
+  ],
+  "counts": {
+    "citations": 38,
+    "OK": 38,
+    "PARTIAL": 0,
+    "TOLERATED": 0,
+    "UNRESOLVED": 0,
+    "negative_failed": 2,
+    "doc_non_ok": 5,
+    "allowlisted": 0,
+    "doc_non_ok_sites": 5,
+    "semantic_sites": 1,
+    "semantic_assertions": 2,
+    "non_ok_sites_total": 6,
+    "numeric_overlap_warnings": 3
+  },
+  "verdict": "fail",
+  "counting_convention": "口径：`non_ok_sites_total` = **非 OK 引用位点数**（按 doc+line+path 去重；同一位点可产生多条断言，如 L138 的 4.46 与 0.6148 算 1 个位点、2 次断言）；`negative_failed` = 断言失败次数；`doc_non_ok` = 文档扫描中 UNRESOLVED+PARTIAL+TOLERATED 的项数（= 位点数）；`numeric_overlap_warnings` 为 advisory，不计入 verdict。",
+  "note": "PARTIAL = 路径被缩写（末段在更深层存在）；TOLERATED = 靠宽容规则才解析（如 dict 上写 `[*]`）。**两者都不等于逐字可解析**，未登记在 ALLOWED_TOLERANCES 里即判不通过。"
+}

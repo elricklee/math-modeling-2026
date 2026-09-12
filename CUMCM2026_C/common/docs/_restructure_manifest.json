@@ -1,0 +1,295 @@
+{
+  "moved": [
+    {
+      "from": "src\\CUMCM2026_C\\__init__.py",
+      "to": "CUMCM2026_C\\common\\code\\__init__.py",
+      "why": "通用代码模块"
+    },
+    {
+      "from": "src\\CUMCM2026_C\\check_data.py",
+      "to": "CUMCM2026_C\\common\\code\\check_data.py",
+      "why": "通用代码模块"
+    },
+    {
+      "from": "src\\CUMCM2026_C\\io_attachments.py",
+      "to": "CUMCM2026_C\\common\\code\\io_attachments.py",
+      "why": "通用代码模块"
+    },
+    {
+      "from": "src\\CUMCM2026_C\\paths.py",
+      "to": "CUMCM2026_C\\common\\code\\paths.py",
+      "why": "通用代码模块"
+    },
+    {
+      "from": "src\\CUMCM2026_C\\validate_results.py",
+      "to": "CUMCM2026_C\\common\\code\\validate_results.py",
+      "why": "通用代码模块"
+    },
+    {
+      "from": "docs\\problem_c_contract.json",
+      "to": "CUMCM2026_C\\common\\docs\\problem_c_contract.json",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\model_variables.json",
+      "to": "CUMCM2026_C\\common\\docs\\model_variables.json",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\C题_统一分析结论.md",
+      "to": "CUMCM2026_C\\common\\docs\\C题_统一分析结论.md",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\C题_三方一致性核对.md",
+      "to": "CUMCM2026_C\\common\\docs\\C题_三方一致性核对.md",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\C题_问题分析与数学建模框架.md",
+      "to": "CUMCM2026_C\\common\\docs\\C题_问题分析与数学建模框架.md",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\C题_数据工程与结果规格.md",
+      "to": "CUMCM2026_C\\common\\docs\\C题_数据工程与结果规格.md",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "docs\\C题_论文框架与交付清单.md",
+      "to": "CUMCM2026_C\\common\\docs\\C题_论文框架与交付清单.md",
+      "why": "跨问口径文档"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\attachment1_date_match.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\attachment1_date_match.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\convergence_checks.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\convergence_checks.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\data_quality_report.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\data_quality_report.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\problem1_reference_solution.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\problem1_reference_solution.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\result_validation_report.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\result_validation_report.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\template_structure.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\template_structure.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\CUMCM2026_C\\volatility_verification.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\volatility_verification.json",
+      "why": "核查/验收报告"
+    },
+    {
+      "from": "data\\processed\\attachment_overview.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\attachment_overview.json",
+      "why": "核查报告"
+    },
+    {
+      "from": "data\\processed\\env_audit.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\env_audit.json",
+      "why": "核查报告"
+    },
+    {
+      "from": "data\\processed\\skill_audit.json",
+      "to": "CUMCM2026_C\\common\\diagnostics\\skill_audit.json",
+      "why": "核查报告"
+    },
+    {
+      "from": "tools\\bootstrap_env.py",
+      "to": "CUMCM2026_C\\common\\tools\\bootstrap_env.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\convergence_checks.py",
+      "to": "CUMCM2026_C\\common\\tools\\convergence_checks.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\diagnose_p1_gap.py",
+      "to": "CUMCM2026_C\\common\\tools\\diagnose_p1_gap.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\env_audit.py",
+      "to": "CUMCM2026_C\\common\\tools\\env_audit.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\inspect_attachments.py",
+      "to": "CUMCM2026_C\\common\\tools\\inspect_attachments.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\inspect_templates.py",
+      "to": "CUMCM2026_C\\common\\tools\\inspect_templates.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\inspect_xlsx_stdlib.py",
+      "to": "CUMCM2026_C\\common\\tools\\inspect_xlsx_stdlib.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\lp_p1_diagnose.py",
+      "to": "CUMCM2026_C\\common\\tools\\lp_p1_diagnose.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\lp_p1_final.py",
+      "to": "CUMCM2026_C\\common\\tools\\lp_p1_final.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\lp_p1_relax.py",
+      "to": "CUMCM2026_C\\common\\tools\\lp_p1_relax.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\lp_problem1_direct.py",
+      "to": "CUMCM2026_C\\common\\tools\\lp_problem1_direct.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\match_attachment1_date.py",
+      "to": "CUMCM2026_C\\common\\tools\\match_attachment1_date.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\md_to_outline.py",
+      "to": "CUMCM2026_C\\common\\tools\\md_to_outline.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\restructure_repo.py",
+      "to": "CUMCM2026_C\\common\\tools\\restructure_repo.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\skill_audit.py",
+      "to": "CUMCM2026_C\\common\\tools\\skill_audit.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\verify_io.py",
+      "to": "CUMCM2026_C\\common\\tools\\verify_io.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\verify_result_templates.py",
+      "to": "CUMCM2026_C\\common\\tools\\verify_result_templates.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "tools\\verify_volatility_claim.py",
+      "to": "CUMCM2026_C\\common\\tools\\verify_volatility_claim.py",
+      "why": "可复现脚本"
+    },
+    {
+      "from": "CUMCM2026Problems\\C题\\C题.txt",
+      "to": "CUMCM2026_C\\00_problem\\C题.txt",
+      "why": "题目原文"
+    },
+    {
+      "from": "data\\processed\\C题_pdf_layout.txt",
+      "to": "CUMCM2026_C\\00_problem\\C题_pdf_layout.txt",
+      "why": "PDF 文本派生"
+    },
+    {
+      "from": "data\\processed\\C题_pdf_raw.txt",
+      "to": "CUMCM2026_C\\00_problem\\C题_pdf_raw.txt",
+      "why": "PDF 文本派生"
+    },
+    {
+      "from": "data\\processed\\problem_preview\\C题_page-1.png",
+      "to": "CUMCM2026_C\\00_problem\\preview\\C题_page-1.png",
+      "why": "PDF 渲染页"
+    },
+    {
+      "from": "data\\processed\\problem_preview\\C题_page-2.png",
+      "to": "CUMCM2026_C\\00_problem\\preview\\C题_page-2.png",
+      "why": "PDF 渲染页"
+    },
+    {
+      "from": "data\\processed\\problem_preview\\C题_page-3.png",
+      "to": "CUMCM2026_C\\00_problem\\preview\\C题_page-3.png",
+      "why": "PDF 渲染页"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件1.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件1.xlsx",
+      "why": "附件（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件2.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件2.xlsx",
+      "why": "附件（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件3.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件3.xlsx",
+      "why": "附件（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件4.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件4.xlsx",
+      "why": "附件（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件5\\result1.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件5\\result1.xlsx",
+      "why": "结果模板（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件5\\result2.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件5\\result2.xlsx",
+      "why": "结果模板（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件5\\result3.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件5\\result3.xlsx",
+      "why": "结果模板（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件5\\result4-2.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件5\\result4-2.xlsx",
+      "why": "结果模板（只读输入）"
+    },
+    {
+      "from": "data\\raw\\CUMCM2026_C\\附件5\\result4-3.xlsx",
+      "to": "CUMCM2026_C\\00_problem\\附件\\附件5\\result4-3.xlsx",
+      "why": "结果模板（只读输入）"
+    },
+    {
+      "from": "reports\\CUMCM2026_C\\paper_skeleton.md",
+      "to": "CUMCM2026_C\\paper\\paper_skeleton.md",
+      "why": "论文骨架"
+    },
+    {
+      "from": "reports\\CUMCM2026_C_analysis.univer",
+      "to": "CUMCM2026_C\\paper\\CUMCM2026_C_analysis.univer",
+      "why": "Univer 分析容器"
+    }
+  ],
+  "skipped": [],
+  "backedUp": [],
+  "removedOldDirs": [
+    "data/processed/problem_preview",
+    "reports/CUMCM2026_C"
+  ]
+}

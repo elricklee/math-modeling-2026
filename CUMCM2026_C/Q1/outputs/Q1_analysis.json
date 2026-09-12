@@ -1,0 +1,531 @@
+{
+  "source_files": {
+    "diagnostics": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q1\\outputs\\Q1_diagnostics.json",
+    "timeseries": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q1\\outputs\\Q1_timeseries.csv",
+    "result": "D:\\MathModeling\\math-modeling-2026\\CUMCM2026_C\\Q1\\outputs\\result1.xlsx"
+  },
+  "headline_metrics": {
+    "total_purchase_kwh": 59482.69899835391,
+    "total_cost_yuan": 35126.948589289634,
+    "mean_purchase_price_yuan_per_kwh": 0.590540597195526,
+    "load_total_kwh": 111024.8081,
+    "pv_total_kwh": 55482.835666666666,
+    "net_load_total_kwh": 55541.972433333336,
+    "charge_total_kwh": 20740.66613168725,
+    "discharge_total_kwh": 16799.939566666668,
+    "charge_loss_kwh": 3940.726565020581,
+    "curtail_total_kwh": 0.0,
+    "curtail_slots": 0,
+    "soc_start_kwh": 6000.0,
+    "soc_end_kwh": 6000.0,
+    "soc_min_kwh": 1200.0,
+    "soc_max_kwh": 10800.0,
+    "baseline_B0_yuan": 48052.04659084667,
+    "storage_net_benefit_yuan": 12925.098001557039,
+    "storage_net_benefit_ratio": 0.26898121762870164,
+    "purchase_peak_kw": 8458.8273,
+    "zero_purchase_slots": 58,
+    "charge_peak_kw": 5000.000000000001,
+    "discharge_peak_kw": 4293.918200000001,
+    "block_labels": [
+      "0:00-4:00",
+      "4:00-8:00",
+      "8:00-12:00",
+      "12:00-16:00",
+      "16:00-20:00",
+      "20:00-24:00"
+    ],
+    "block_charge_kwh": [
+      4500.0,
+      833.3333333333334,
+      4787.964288065847,
+      5286.035176954734,
+      0.0,
+      5333.333333333334
+    ],
+    "block_discharge_kwh": [
+      0.0,
+      6365.841200000001,
+      1702.996983333334,
+      91.1013833333335,
+      5780.1318833333335,
+      2859.868116666667
+    ]
+  },
+  "price_and_regime": {
+    "price_quantiles": {
+      "q25": 0.4363,
+      "median": 0.80735,
+      "q75": 0.984475
+    },
+    "price_bins": {
+      "low_count": 36,
+      "mid_count": 72,
+      "high_count": 36,
+      "buy_share_low": 0.5264450954208907,
+      "buy_share_high": 0.10461615458623974,
+      "charge_share_low": 0.5544662801904103,
+      "charge_share_high": 0.01732058400800278,
+      "discharge_share_low": 0.0,
+      "discharge_share_high": 0.6406354919955172
+    },
+    "charge_weighted_price": 0.49295839080433107,
+    "discharge_weighted_price": 1.1376015555475418,
+    "buy_weighted_price": 0.5905405971913652,
+    "plain_price_mean": 0.7661972222222223,
+    "charge_regimes": [
+      [
+        "0:00-0:10",
+        "0:40-0:50",
+        5,
+        4166.666665000001
+      ],
+      [
+        "1:20-1:30",
+        "1:20-1:30",
+        1,
+        333.333333
+      ],
+      [
+        "5:30-5:40",
+        "5:30-5:40",
+        1,
+        833.333333
+      ],
+      [
+        "9:30-9:40",
+        "14:20-14:30",
+        30,
+        9961.528619
+      ],
+      [
+        "15:00-15:10",
+        "15:00-15:10",
+        1,
+        112.470844
+      ],
+      [
+        "21:50-22:00",
+        "22:00-22:10",
+        2,
+        1666.666666
+      ],
+      [
+        "22:20-22:30",
+        "22:30-22:40",
+        2,
+        1666.666666
+      ],
+      [
+        "22:50-23:00",
+        "22:50-23:00",
+        1,
+        833.333333
+      ],
+      [
+        "23:10-23:20",
+        "23:20-23:30",
+        2,
+        1166.666666
+      ]
+    ],
+    "discharge_regimes": [
+      [
+        "5:50-6:00",
+        "9:20-9:30",
+        22,
+        8068.838184
+      ],
+      [
+        "14:30-14:40",
+        "14:40-14:50",
+        2,
+        91.10138400000001
+      ],
+      [
+        "18:00-18:10",
+        "18:00-18:10",
+        1,
+        109.26725
+      ],
+      [
+        "18:40-18:50",
+        "20:30-20:40",
+        12,
+        8530.732748999999
+      ]
+    ],
+    "charge_slots": 45,
+    "discharge_slots": 37,
+    "peak_load_slot": "9:00-9:10",
+    "peak_load_slot_kwh": 993.1616
+  },
+  "storage_events": {
+    "soc_start": 6000.0,
+    "soc_end": 6000.0,
+    "soc_min": 1200.0,
+    "soc_max": 10800.0,
+    "soc_min_clock": "20:30-20:40",
+    "soc_max_clock": "5:30-5:40",
+    "slots_at_upper_bound": 21,
+    "slots_at_lower_bound": 8,
+    "charge_span": [
+      [
+        "0:00-0:10",
+        "0:40-0:50"
+      ],
+      [
+        "1:20-1:30",
+        "1:20-1:30"
+      ],
+      [
+        "5:30-5:40",
+        "5:30-5:40"
+      ],
+      [
+        "9:30-9:40",
+        "14:20-14:30"
+      ],
+      [
+        "15:00-15:10",
+        "15:00-15:10"
+      ],
+      [
+        "21:50-22:00",
+        "22:00-22:10"
+      ],
+      [
+        "22:20-22:30",
+        "22:30-22:40"
+      ],
+      [
+        "22:50-23:00",
+        "22:50-23:00"
+      ],
+      [
+        "23:10-23:20",
+        "23:20-23:30"
+      ]
+    ],
+    "discharge_span": [
+      [
+        "5:50-6:00",
+        "9:20-9:30"
+      ],
+      [
+        "14:30-14:40",
+        "14:40-14:50"
+      ],
+      [
+        "18:00-18:10",
+        "18:00-18:10"
+      ],
+      [
+        "18:40-18:50",
+        "20:30-20:40"
+      ]
+    ],
+    "idle_slots": 62
+  },
+  "energy_account": {
+    "pv_kwh": 55482.835665,
+    "curtail_kwh": 0.0,
+    "discharge_kwh": 16799.939567,
+    "purchase_kwh": 59482.699001999994,
+    "supply_total_kwh": 131765.474234,
+    "load_kwh": 111024.80809899999,
+    "charge_kwh": 20740.666125,
+    "demand_total_kwh": 131765.47422399998,
+    "account_residual_kwh": 1.0000017937272787e-05,
+    "storage_throughput_loss_kwh": 3940.7265579999985,
+    "self_sufficiency_ratio": 0.5485714345710926,
+    "pv_consumption_ratio": 1.0
+  },
+  "baseline_comparison": {
+    "baseline_B0_yuan": 48052.046591609396,
+    "optimal_cost_yuan": 35126.9485911953,
+    "saving_yuan": 12925.098000414095,
+    "saving_ratio": 0.2689812176006466,
+    "delta_total_yuan": 12925.098000414098,
+    "delta_negative_slots": 23,
+    "delta_negative_yuan": -6186.5393841098,
+    "top_saving_slots": [
+      {
+        "slot": "20:30-20:40",
+        "price": 1.3952,
+        "baseline_kwh": 715.653033,
+        "plan_kwh": 0.0,
+        "saving_yuan": 998.4791116416001
+      },
+      {
+        "slot": "20:20-20:30",
+        "price": 1.3489,
+        "baseline_kwh": 715.22685,
+        "plan_kwh": 0.0,
+        "saving_yuan": 964.769497965
+      },
+      {
+        "slot": "20:00-20:10",
+        "price": 1.3513,
+        "baseline_kwh": 713.704083,
+        "plan_kwh": 0.0,
+        "saving_yuan": 964.4283273578999
+      },
+      {
+        "slot": "19:30-19:40",
+        "price": 1.349,
+        "baseline_kwh": 711.23245,
+        "plan_kwh": 0.0,
+        "saving_yuan": 959.45257505
+      },
+      {
+        "slot": "19:50-20:00",
+        "price": 1.3482,
+        "baseline_kwh": 711.445033,
+        "plan_kwh": 0.0,
+        "saving_yuan": 959.1701934906
+      },
+      {
+        "slot": "19:40-19:50",
+        "price": 1.3473,
+        "baseline_kwh": 711.6625,
+        "plan_kwh": 0.0,
+        "saving_yuan": 958.82288625
+      },
+      {
+        "slot": "20:10-20:20",
+        "price": 1.34,
+        "baseline_kwh": 715.28415,
+        "plan_kwh": 0.0,
+        "saving_yuan": 958.480761
+      },
+      {
+        "slot": "19:00-19:10",
+        "price": 1.3523,
+        "baseline_kwh": 707.406467,
+        "plan_kwh": 0.0,
+        "saving_yuan": 956.6257653241
+      },
+      {
+        "slot": "19:20-19:30",
+        "price": 1.3483,
+        "baseline_kwh": 709.446883,
+        "plan_kwh": 0.0,
+        "saving_yuan": 956.5472323489
+      },
+      {
+        "slot": "19:10-19:20",
+        "price": 1.3445,
+        "baseline_kwh": 708.553,
+        "plan_kwh": 0.0,
+        "saving_yuan": 952.6495085
+      }
+    ],
+    "baseline_zero_purchase_slots": 30,
+    "plan_zero_purchase_slots": 58,
+    "baseline_peak_kw": 4956.499500000001,
+    "plan_peak_kw": 8458.8273
+  },
+  "arbitrage_account": {
+    "charge_weighted_price_yuan_per_kwh": 0.49295839080433107,
+    "discharge_avoided_cost_yuan": 19111.6373845239,
+    "stored_energy_cost_yuan": 9201.856860620368,
+    "arbitrage_net_yuan": 9909.780523903532,
+    "total_saving_vs_baseline_yuan": 12925.098000414095,
+    "valley_purchase_substitution_yuan": 3015.317476510563,
+    "same_slot_charge_and_discharge_count": 0
+  },
+  "attachment1_representativeness": {
+    "att1_net_load_kwh": 55541.972433333336,
+    "att2_daily_net_mean_kwh": 55541.95106470319,
+    "att2_daily_net_std_kwh": 23999.91943333023,
+    "att2_daily_net_cv": 0.4321043638775256,
+    "att2_daily_net_min_kwh": 70.19363333333331,
+    "att2_daily_net_max_kwh": 92885.23926666667,
+    "att1_price_mean": 0.7661972222222223,
+    "att4_price_mean": 0.7661976046423136,
+    "corr_daily_load_vs_daily_price": 0.8977421831125165
+  },
+  "hourly_price_profile": {
+    "00:00-01:00": 0.42650000000000005,
+    "01:00-02:00": 0.4307999999999999,
+    "02:00-03:00": 0.43373333333333336,
+    "03:00-04:00": 0.4365333333333334,
+    "04:00-05:00": 0.4394,
+    "05:00-06:00": 0.52655,
+    "06:00-07:00": 0.8710333333333334,
+    "07:00-08:00": 0.8470666666666666,
+    "08:00-09:00": 1.0814666666666666,
+    "09:00-10:00": 0.9789499999999999,
+    "10:00-11:00": 0.8651666666666668,
+    "11:00-12:00": 0.4729166666666667,
+    "12:00-13:00": 0.5249833333333334,
+    "13:00-14:00": 0.88455,
+    "14:00-15:00": 0.9537833333333333,
+    "15:00-16:00": 0.7422833333333334,
+    "16:00-17:00": 0.8838666666666666,
+    "17:00-18:00": 1.03135,
+    "18:00-19:00": 1.2737,
+    "19:00-20:00": 1.3482666666666665,
+    "20:00-21:00": 1.2652,
+    "21:00-22:00": 0.8275666666666667,
+    "22:00-23:00": 0.41815,
+    "23:00-24:00": 0.4249166666666666
+  },
+  "block_detail": {
+    "0:00-4:00": {
+      "charge_kwh": 4499.999998,
+      "discharge_kwh": 0.0,
+      "price_mean": 0.43189166666666673,
+      "purchase_kwh": 18487.106186
+    },
+    "4:00-8:00": {
+      "charge_kwh": 833.333333,
+      "discharge_kwh": 6365.8412,
+      "price_mean": 0.6710125000000001,
+      "purchase_kwh": 7302.749566
+    },
+    "8:00-12:00": {
+      "charge_kwh": 4787.964287,
+      "discharge_kwh": 1702.996984,
+      "price_mean": 0.849625,
+      "purchase_kwh": 1760.9755049999999
+    },
+    "12:00-16:00": {
+      "charge_kwh": 5286.035176,
+      "discharge_kwh": 91.10138400000001,
+      "price_mean": 0.7764000000000001,
+      "purchase_kwh": 3809.9938609999995
+    },
+    "16:00-20:00": {
+      "charge_kwh": 0.0,
+      "discharge_kwh": 5780.131883,
+      "price_mean": 1.1342958333333335,
+      "purchase_kwh": 10419.526715
+    },
+    "20:00-24:00": {
+      "charge_kwh": 5333.333331,
+      "discharge_kwh": 2859.868116,
+      "price_mean": 0.7339583333333334,
+      "purchase_kwh": 17702.347169
+    }
+  },
+  "sanity_checks": {
+    "cost_yuan": 35126.948589289634,
+    "cost_from_linear_objective_yuan": 35126.948589289634,
+    "cost_objective_residual_yuan": 0.0,
+    "max_recurrence_residual_kwh": 8.810729923425242e-13,
+    "max_balance_residual_kwh": 1.1368683772161603e-13,
+    "max_eq_matrix_residual": 4.547473508864641e-13,
+    "soc_bounds_violation_kwh": 0.0,
+    "power_limit_violation_kwh": 0.0,
+    "curtail_limit_violation_kwh": 0.0,
+    "buy_nonneg_violation_kwh": 0.0,
+    "discharge_over_charge": 0.8099999999999998,
+    "eta_squared_reference": 0.81,
+    "discharge_over_charge_gap": 2.220446049250313e-16,
+    "charge_equals_discharge_condition": true
+  },
+  "table1": {
+    "slots": [
+      "10:00-10:10",
+      "12:00-12:10",
+      "14:00-14:10",
+      "16:00-16:10",
+      "18:00-18:10",
+      "20:00-20:10"
+    ],
+    "purchase_kwh": [
+      0.0,
+      480.4124499999998,
+      0.0,
+      445.4316500000002,
+      531.8940499999999,
+      0.0
+    ],
+    "full_day_purchase_kwh": 59482.69899835391,
+    "full_day_cost_yuan": 35126.948589289634
+  },
+  "table2": {
+    "slots": [
+      "0:00-4:00",
+      "4:00-8:00",
+      "8:00-12:00",
+      "12:00-16:00",
+      "16:00-20:00",
+      "20:00-24:00"
+    ],
+    "charge_kwh": [
+      4500.0,
+      833.3333333333334,
+      4787.964288065847,
+      5286.035176954734,
+      0.0,
+      5333.333333333334
+    ],
+    "discharge_kwh": [
+      0.0,
+      6365.841200000001,
+      1702.996983333334,
+      91.1013833333335,
+      5780.1318833333335,
+      2859.868116666667
+    ],
+    "soc_0_00_kwh": 6000.0,
+    "soc_24_00_kwh": 6000.0
+  },
+  "sensitivity_efficiency": [
+    {
+      "eta": 0.85,
+      "allow_curtail": true,
+      "success": true,
+      "objective_yuan": 36603.40648002707,
+      "recomputed_cost_yuan": 36603.40648002707,
+      "purchase_kwh": 61728.97512460496,
+      "charge_kwh": 22295.505193771627,
+      "discharge_kwh": 16108.502502500001,
+      "curtail_kwh": 0.0,
+      "discharge_over_charge": 0.7225,
+      "eta_squared": 0.7224999999999999
+    },
+    {
+      "eta": 0.9,
+      "allow_curtail": true,
+      "success": true,
+      "objective_yuan": 35126.948589289634,
+      "recomputed_cost_yuan": 35126.948589289634,
+      "purchase_kwh": 59482.69899835391,
+      "charge_kwh": 20740.66613168725,
+      "discharge_kwh": 16799.939566666668,
+      "curtail_kwh": 0.0,
+      "discharge_over_charge": 0.8099999999999998,
+      "eta_squared": 0.81
+    },
+    {
+      "eta": 0.95,
+      "allow_curtail": true,
+      "success": true,
+      "objective_yuan": 33767.03262075283,
+      "recomputed_cost_yuan": 33767.03262075283,
+      "purchase_kwh": 57472.64310064635,
+      "charge_kwh": 19801.75043397969,
+      "discharge_kwh": 17871.07976666667,
+      "curtail_kwh": 0.0,
+      "discharge_over_charge": 0.9025,
+      "eta_squared": 0.9025
+    }
+  ],
+  "control_no_curtail": {
+    "eta": 0.9,
+    "allow_curtail": false,
+    "success": true,
+    "objective_yuan": 35126.948589289634,
+    "recomputed_cost_yuan": 35126.948589289634,
+    "purchase_kwh": 59482.69899835391,
+    "charge_kwh": 20740.66613168725,
+    "discharge_kwh": 16799.939566666668,
+    "curtail_kwh": 0.0,
+    "discharge_over_charge": 0.8099999999999998,
+    "eta_squared": 0.81
+  }
+}

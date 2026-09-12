@@ -15,7 +15,7 @@ dist/
 *.bak
 *.swp
 
-# Data and outputs
+# Data and outputs（旧的按类别目录，重构后已清空；保留规则以防回退）
 data/raw/*
 data/processed/*
 !data/raw/.gitkeep
@@ -26,6 +26,18 @@ reports/*
 !reports/.gitkeep
 results/*
 !results/.gitkeep
+
+# ---------------------------------------------------------------- #
+# CUMCM2026 C题：按问分目录（见 CUMCM2026_C/README.md）
+# 原则：代码、契约、结果、图、章节全部入库；只忽略可再生的运行产物。
+# ---------------------------------------------------------------- #
+# 可再生的诊断输出（核查/验收报告与日志由脚本重跑生成）
+CUMCM2026_C/common/diagnostics/*.json
+CUMCM2026_C/common/diagnostics/*.txt
+CUMCM2026_C/Q*/outputs/_envtest/
+CUMCM2026_C/Q*/*.log
+# 重构时的备份文件
+CUMCM2026_C/**/*.pre-restructure.bak
 
 # Local editor
 .vscode/*

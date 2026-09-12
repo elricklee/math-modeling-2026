@@ -1,0 +1,65 @@
+{
+  "JIANMO": {
+    "lines": 350,
+    "bytes": 34528,
+    "mtime": "2026-09-12 04:18:32",
+    "sha256_16": "c4ddbf165b73a843",
+    "sections": 10,
+    "table_nums": [
+      1
+    ],
+    "table_missing": [],
+    "md_image_placeholders": 0,
+    "images": []
+  },
+  "QIUJIE": {
+    "lines": 460,
+    "bytes": 52312,
+    "mtime": "2026-09-12 05:52:54",
+    "sha256_16": "8fbaf0b6f6ff7b12",
+    "sections": 10,
+    "table_nums": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "table_missing": [
+      1
+    ],
+    "md_image_placeholders": 0,
+    "images": []
+  },
+  "png_count": 13,
+  "png_names": [
+    "Q2_fig10_forecast_error.png",
+    "Q2_fig11_emergency_daily.png",
+    "Q2_fig12_variant_target_days.png",
+    "Q2_fig13_cost_comparison.png",
+    "Q2_fig1_daily_energy.png",
+    "Q2_fig2_plan_heatmap.png",
+    "Q2_fig3_target_days.png",
+    "Q2_fig4_target_days_soc.png",
+    "Q2_fig5_daily_cost.png",
+    "Q2_fig6_price_vs_profile.png",
+    "Q2_fig7_monthly.png",
+    "Q2_fig8_blocks_and_soc.png",
+    "Q2_fig9_economics.png"
+  ]
+}
