@@ -26,6 +26,8 @@ reports/*
 !reports/.gitkeep
 results/*
 !results/.gitkeep
+!results/CUMCM2026_C/
+!results/CUMCM2026_C/*.xlsx
 
 # Local editor
 .vscode/*
