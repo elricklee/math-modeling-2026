@@ -646,7 +646,10 @@ def check_totals(
     plan = np.array([[_as_float(v) for v in r[1:145]] for r in body], dtype=float)
     reported_e = np.array([_as_float(r[145] if len(r) > 145 else None) for r in body])
     reported_c = np.array([_as_float(r[146] if len(r) > 146 else None) for r in body])
-    calc_e, calc_c = recompute_daily_totals(plan, price)
+    # 附件 5 宽表列头从第二个时段开始，末列为次日首时段；
+    # 费用复算需将价格向左循环一位，与模板列语义一致。
+    template_price = np.roll(price, -1, axis=1) if price.ndim == 2 and price.shape[1] == 144 else price
+    calc_e, calc_c = recompute_daily_totals(plan, template_price)
     if np.all(np.isnan(reported_e)) and np.all(np.isnan(reported_c)):
         return CheckResult(
             f"{sheet} 全天购电量/购电费复算",
@@ -938,7 +941,10 @@ def validate_all(repo_root: Path | None = None) -> dict[str, Any]:
     del repo_root  # 路径统一来自 src.CUMCM2026_C.paths（其内部已基于 src.config.ROOT）
 
     price_matrix: np.ndarray | None = None
+    fixed_price_matrix: np.ndarray | None = None
     try:
+        fixed = io.load_attachment_1()
+        fixed_price_matrix = np.tile(fixed.price.values, (len(PLANNED_RESULT_DATES), 1))
         attachment_4 = io.load_attachment_4()
         index = {d: i for i, d in enumerate(attachment_4.dates)}
         rows = [index[d] for d in PLANNED_RESULT_DATES if d in index]
@@ -951,11 +957,11 @@ def validate_all(repo_root: Path | None = None) -> dict[str, Any]:
         validate_result1(paths.result_path("result1")),
         validate_planned_file(
             "result2", paths.result_path("result2"),
-            ["计划购电量", "充放电量", "紧急购电量"], price_matrix, has_adjust=False,
+            ["计划购电量", "充放电量", "紧急购电量"], fixed_price_matrix, has_adjust=False,
         ),
         validate_planned_file(
             "result3", paths.result_path("result3"),
-            ["计划购电量", "调整购电量", "充放电量", "紧急购电量"], price_matrix, has_adjust=True,
+            ["计划购电量", "调整购电量", "充放电量", "紧急购电量"], fixed_price_matrix, has_adjust=True,
         ),
         validate_planned_file(
             "result4-2", paths.result_path("result4-2"),

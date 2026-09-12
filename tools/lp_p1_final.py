@@ -43,7 +43,7 @@ import openpyxl
 from scipy.optimize import linprog
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw" / "CUMCM2026_C"
+RAW = ROOT / "data" / "raw" / "C题"
 OUT = ROOT / "data" / "processed" / "CUMCM2026_C"
 
 DT, XMAX, ETA = 1.0 / 6.0, 5000.0 / 6.0, 0.9

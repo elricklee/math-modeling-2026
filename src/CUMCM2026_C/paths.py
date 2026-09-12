@@ -2,7 +2,7 @@
 
 设计约定
 --------
-* 原始附件一律**只读**：位于 ``data/raw/CUMCM2026_C``。
+* 原始附件一律**只读**：位于 ``data/raw/C题``（由用户指定的真实附件目录导入）。
 * 一切中间产物写入 ``data/processed/CUMCM2026_C``，结果写入 ``results/CUMCM2026_C``，
   图形写入 ``figures/CUMCM2026_C``。
 * 储能与电价等题目参数集中在 :data:`STORAGE` 与 :data:`PRICE_RULES`，
@@ -27,7 +27,7 @@ CASE_DIR: Path = ROOT / "CUMCM2026Problems" / "C题"
 PROBLEM_TXT: Path = CASE_DIR / "C题.txt"
 """题目原文（权威文本，与 PDF 逐字节一致）。"""
 
-RAW_DIR: Path = ROOT / "data" / "raw" / "CUMCM2026_C"
+RAW_DIR: Path = ROOT / "data" / "raw" / "C题"
 """附件 1~4 与附件 5 结果模板所在目录（只读，禁止修改）。"""
 
 ATTACHMENT_5_DIR: Path = RAW_DIR / "附件5"
