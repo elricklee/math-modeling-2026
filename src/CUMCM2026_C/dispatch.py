@@ -131,13 +131,30 @@ def plan_segment(price, load_kw, pv_kw, initial_soc, original_plan=None,
             'objective_yuan':float(objective@z), 'optimal_value_yuan':float(primary.fun)}
 
 
-def execute_interval(soc, plan, charge, discharge, load_kw, pv_kw):
-    """Observe current actual power; enforce device bounds before settlement."""
+def execute_interval(soc, plan, charge, discharge, load_kw, pv_kw, adaptive_storage=False,
+                     planned_soc_next=None):
+    """Observe current actual power; enforce device bounds before settlement.
+
+    adaptive_storage=True lets the operator top up discharge in real time to
+    cover shortfalls (purchase plan stays frozen), spending only energy above
+    the planned SOC trajectory; the default replays the planned storage
+    schedule bit-for-bit as before."""
     load, pv = load_kw*DT, pv_kw*DT
     charge = min(max(charge,0.), CAP, max(0.,(HI-soc)/ETA))
     # PV is used first. Avoid dumping battery energy if demand was overpredicted.
     discharge = min(max(discharge,0.), CAP-charge, max(0.,(soc-LO)*ETA), max(load-pv,0.))
     need = max(load+charge-discharge-pv,0.)
+    if adaptive_storage and need > max(plan,0.):
+        # Real-time recourse from storage before paying the 5x tariff, but
+        # only with energy above the planned SOC trajectory, so the globally
+        # optimised reserve schedule stays intact.
+        extra = min(need-max(plan,0.), CAP-charge-discharge,
+                    max(0., (soc-LO)*ETA-discharge))
+        if planned_soc_next is not None:
+            extra = min(extra, max(0., (soc-planned_soc_next)*ETA))
+        if extra > 0:
+            discharge += extra
+            need -= extra
     normal = min(max(plan,0.),need)
     emergency = max(need-plan,0.)
     spill = max(pv+discharge-load-charge,0.)
@@ -154,7 +171,12 @@ def settlement(price, initial, final, emergency):
             'emergency_cost_yuan':float(5*price@emergency)}
 
 
-def run(question, output: Path|None=None, policy: Policy|None=None, attachments=None):
+def run(question, output: Path|None=None, policy: Policy|None=None, attachments=None,
+        load_predictor=None, pv_predictor=None, plan_fn=None, adaptive_storage=False):
+    """load_predictor/pv_predictor: optional causal callables ``i -> 144 kW``
+    overriding the built-in history-quantile forecasts (comparison experiments).
+    plan_fn: optional planner with the plan_segment signature.  When all are
+    None the original behavior is bit-for-bit unchanged."""
     if question not in ('2','3','4-2','4-3'):
         raise ValueError(question)
     if policy is None:
@@ -173,8 +195,10 @@ def run(question, output: Path|None=None, policy: Policy|None=None, attachments=
     state=paths.STORAGE.soc_init_kwh; records=[]; warmup_end=None
     for i,day in enumerate(a2.dates):
         load_f=(np.asarray(a2.load[i], float) if policy.known_daily_load else
-                history_prediction(a2.load,i,a2.dates,policy.load_quantile,policy.history_days,3000.))
-        pv_hist=history_prediction(a2.pv_actual,i,a2.dates,policy.historical_pv_quantile,policy.history_days)
+                (load_predictor(i) if load_predictor is not None else
+                 history_prediction(a2.load,i,a2.dates,policy.load_quantile,policy.history_days,3000.)))
+        pv_hist=(pv_predictor(i) if pv_predictor is not None else
+                 history_prediction(a2.pv_actual,i,a2.dates,policy.historical_pv_quantile,policy.history_days))
         price_f=(history_prediction(a4.price,i,a4.dates,.5,policy.history_days,1.) if volatile
                  else np.asarray(a1.price.values,float))
         actual_price=np.asarray(a4.price[price_index[day]] if volatile else a1.price.values,float)
@@ -184,7 +208,12 @@ def run(question, output: Path|None=None, policy: Policy|None=None, attachments=
         releases=(0,36,72,108) if rolling else (0,)
         for start in releases:
             pv_f=forecast_vector(a3,day,start//6,policy.pv_scale) if rolling else pv_hist*policy.pv_scale
-            decision=plan_segment(price_f[start:],load_f[start:],pv_f[start:],state,
+            if plan_fn is not None:
+                decision=plan_fn(price_f[start:],load_f[start:],pv_f[start:],state,
+                                 None if initial is None else initial[start:],
+                                 policy.terminal_target_kwh,i,start)
+            else:
+                decision=plan_segment(price_f[start:],load_f[start:],pv_f[start:],state,
                                   None if initial is None else initial[start:],policy.terminal_target_kwh)
             if initial is None:
                 initial=decision['purchase'].copy()
@@ -192,7 +221,9 @@ def run(question, output: Path|None=None, policy: Policy|None=None, attachments=
             for t in range(start,stop):
                 j=t-start;final[t]=decision['purchase'][j]
                 executed=execute_interval(state,final[t],decision['charge'][j],decision['discharge'][j],
-                                          float(a2.load[i,t]),float(a2.pv_actual[i,t]))
+                                          float(a2.load[i,t]),float(a2.pv_actual[i,t]),
+                                          adaptive_storage=adaptive_storage,
+                                          planned_soc_next=float(decision['soc'][j+1]) if adaptive_storage else None)
                 state=executed['soc'];soc[t+1]=state
                 for k in actual:actual[k][t]=executed[k]
         if day < date.fromisoformat(paths.RESULT2_START):
