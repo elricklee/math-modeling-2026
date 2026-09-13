@@ -127,15 +127,16 @@ class SheetSpec:
 
 PLAN_HEADER: tuple[str, ...] = (
     "日期\\时间",
-    *[io.interval_label(t) for t in range(1, 145)],
+    *io.plan_purchase_labels_as_template(),
     "全天购电量",
     "全天购电费",
 )
-"""``计划购电量``（宽表）的 147 列表头。
+"""``计划购电量``（宽表）的 147 列表头（官方模板原样口径，2026-09-13 裁定）。
 
 第 43 列（1-based）是模板拼写瑕疵 ``7:0-7:10``（规范写法应为 ``7:00-7:10``），
 由 :data:`src.CUMCM2026_C.io_attachments.TEMPLATE_LABEL_QUIRKS` 显式记录并
-**建议原样保留**，校验时不做纠正。
+**建议原样保留**，校验时不做纠正。数据位 i 装区间 i+1 的值（末列次日首区间，
+12/31 置 0），见 export_results 的 mode="template" 说明。
 """
 
 _ADJUST_HEADER: tuple[str, ...] = PLAN_HEADER
@@ -646,10 +647,19 @@ def check_totals(
     plan = np.array([[_as_float(v) for v in r[1:145]] for r in body], dtype=float)
     reported_e = np.array([_as_float(r[145] if len(r) > 145 else None) for r in body])
     reported_c = np.array([_as_float(r[146] if len(r) > 146 else None) for r in body])
-    # 附件 5 宽表列头从第二个时段开始，末列为次日首时段；
-    # 费用复算需将价格向左循环一位，与模板列语义一致。
-    template_price = price
-    calc_e, calc_c = recompute_daily_totals(plan, template_price)
+    # 官方模板原样口径（2026-09-13 裁定）：第 j 格 = 区间 j+1（0-based j=0..143），
+    # 末列 = 次日首区间；当日区间 1 藏在前一行的末列。故真实日合计为
+    #   total(d) = sum(cells(d)) − cells(d, 末) + cells(d−1, 末)
+    # 首行（2/1）的区间 1 在 1/31 行、不在本表内，首行豁免。费用同理按区间对齐价格。
+    calc_e = np.full(plan.shape[0], np.nan)
+    calc_c = np.full(plan.shape[0], np.nan)
+    if plan.shape[0] >= 2:
+        prev_first = plan[:-1, -1]          # 行 d−1 的末列 = 行 d 的区间 1
+        cells_rest = plan[1:, :-1]          # 行 d 的前 143 格 = 区间 2..144
+        calc_e[1:] = cells_rest.sum(axis=1) + prev_first
+        price_rest = price[1:, 1:]          # 区间 2..144 的电价
+        price_first = price[1:, 0]          # 区间 1 的电价
+        calc_c[1:] = (cells_rest * price_rest).sum(axis=1) + prev_first * price_first
     if np.all(np.isnan(reported_e)) and np.all(np.isnan(reported_c)):
         return CheckResult(
             f"{sheet} 全天购电量/购电费复算",
@@ -857,7 +867,7 @@ def validate_result1(path: Path) -> FileReport:
         _emit_missing(report, f"未找到 {path}；请先运行问题 1 求解脚本生成该文件")
         return report
     report.add(check_sheets(path, ["计划购电量", "充放电量"]))
-    report.add(check_plan_sheet(path, "计划购电量", label_mode="row", label_variant="decision"))
+    report.add(check_plan_sheet(path, "计划购电量", label_mode="row", label_variant="template"))
     report.add(check_charge_discharge_sheet(path, "充放电量", expect_dates=None))
     groups = extract_storage_series(path, "充放电量")
     report.add(check_soc_bounds(groups))

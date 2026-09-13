@@ -339,3 +339,5 @@ SOC 递推
 4. **问题4 双口径（D1/D2）** 实现与 Regret 分析。
 5. **出图**：按论文手 15 张图清单生产 `figures/CUMCM2026_C/`。
 6. **论文成稿**：以 `reports/CUMCM2026_C/paper_skeleton.md` 为骨架回填。
+
+> **2026-09-13 更新**：§四问共用输出约定中"宽表写盘用 plan_purchase_labels_as_template() 生成表头、数据位 i 装 t=i"的组合已被废止。现行口径见 `docs/C题_版本对照与修正记录.md` 2026-09-13 条：**官方模板原样口径**（write_plan_columns mode="template"）——表头逐字符沿用模板，数据位 i 装区间 i+1 的值，末列=次日首区间（12/31 置 0），当日 0:00-0:10 只进全天汇总；result1 末行=次日首时段=典型日区间 1 的值。

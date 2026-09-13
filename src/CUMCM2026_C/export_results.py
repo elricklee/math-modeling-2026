@@ -15,6 +15,13 @@ def clear_body(ws):
         ws.delete_rows(2, ws.max_row-1)
 
 
+# 官方模板口径（write_plan_columns mode="template"，A18 单一事实来源）：
+# 表头逐字符沿用附件5 原样（0:10-0:20 … 0:00-0:10+1，含 7:0-7:10 瑕疵）；
+# 第 i 个数据位装区间 i+1 的值，末列为次日首区间（12/31 置 0，表注声明）；
+# 全天购电量/购电费仍是当日 144 区间的真实合计（区间1 只进汇总，无独立列）。
+_TEMPLATE_COLS: list[str] = [lab for _, lab in io.write_plan_columns("template")]
+
+
 def export_scenario(data, destination: Path|None=None):
     name='result'+data['model']['question']
     dest=destination or paths.result_path(name)
@@ -25,16 +32,19 @@ def export_scenario(data, destination: Path|None=None):
         clear_body(ws)
     for ws in book:
         if ws.title in ('计划购电量','调整购电量'):
-            for t in range(144):ws.cell(1,t+2,io.interval_label(t+1))
+            for t in range(144):ws.cell(1,t+2,_TEMPLATE_COLS[t])
             ws.freeze_panes='B2'
         else:
             ws.freeze_panes='C2'
-    for i,r in enumerate(data['daily']):
+    daily=data['daily']
+    for i,r in enumerate(daily):
         day=datetime.fromisoformat(r['date']); price=np.asarray(r['price_by_interval'])
+        nxt=daily[i+1] if i+1<len(daily) else None
         for title,key in [('计划购电量','plan_by_interval_kwh'),('调整购电量','purchase_by_interval_kwh')]:
             if title not in book.sheetnames:continue
             v=np.asarray(r[key]);ws=book[title]
-            ws.append([day,*v.tolist(),float(v.sum()),float(price@v)])
+            tail=float(np.asarray(nxt[key])[0]) if nxt is not None else 0.0
+            ws.append([day,*v[1:].tolist(),tail,float(v.sum()),float(price@v)])
         ws=book['充放电量']
         c=np.asarray(r['charge_by_interval_kwh']);d=np.asarray(r['discharge_by_interval_kwh'])
         for b in range(6):
